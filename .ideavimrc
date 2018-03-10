@@ -1,0 +1,130 @@
+set gdefault                      " substitute all occurrences in line per default
+set history=10000                  " keep x lines of command line history
+set hlsearch                      " highlight search occurrences
+set ignorecase                    " ignore case in search patterns
+set smartcase                     " no ignore case when pattern is uppercase
+set incsearch                     " show search results while typing
+set wrapscan                      " searches wrap around the end of the file
+set number                        " line numbers
+set scrolloff=5 sidescrolloff=10  " keep some lines before and after the cursor visible
+set clipboard=unnamedplus,unnamed " integrate with system clipboard
+set surround                      " emulate vim-surround plugin
+set relativenumber
+set visualbell t_vb=                  " stop annoying beeping for non-error errors
+set cursorline                        " highlight current line
+if exists('&belloff')
+  set belloff=all                     " never ring the bell for any reason
+endif
+
+let mapleader = " "
+
+" edit ideavim config
+nnoremap <leader>vv :e C:\Users\Milos\.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" simple closing and saving (helpful in NEO keyboard layout)
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :action Exit<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :action CloseAllEditorsButActive<CR>
+nnoremap <leader>o :action HideAllWindows<CR>
+
+nnoremap <leader>o :action HideAllWindows<CR>
+
+"-----------------------------------------------------
+" Fix some vim annoyances
+
+" make Y behave like D and C, yanking till end of line
+map Y y$
+
+" don't overwrite register when pasting over selection
+vnoremap p pgvy
+
+" don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" delete/edit whole word backwards
+" (can confilict with multiple cursors)
+nnoremap db xdb
+nnoremap cb xcb
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom bindings
+
+" clear search highlighting
+nnoremap <leader>n <esc>:nohls<return><esc>
+
+" TODO: toggle chars at end of line
+nnoremap <leader>, mZA,<Esc>`Z
+nnoremap <leader>; mZA;<Esc>`Z
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IDEA specific
+
+" moving between tabs
+nmap <C-h> <c-w>h
+nmap <C-l> <c-w>l
+nmap <C-k> <c-w>k
+nmap <C-j> <c-w>j
+
+" change font size
+nmap + :action EditorIncreaseFontSize<CR>
+nmap - :action EditorDecreaseFontSize<CR>
+nmap <leader>= :action EditorResetFontSize<CR>
+
+" code navigation
+
+nmap <leader>f :promptfind<CR>
+nmap <leader>s :promptrepl<CR>
+nmap <leader>e viw s
+
+vmap <leader>f :<bs><bs><kbs><bs><bs>promptfind<CR>
+vmap <leader>s :<bs><bs><bs><bs><bs>promptrepl<CR>
+
+nmap <leader>p :action GotoSuperMethod<CR>
+nmap <leader>t :action GotoFile<CR>
+nmap <leader>c :action GotoAction<CR>
+nmap <leader>gc :action GotoClass<CR>
+nmap <leader>gs :action GotoSymbol<CR>
+nmap <leader>ne :action GotoNextError<CR>
+
+nmap <leader>d :action GotoDeclaration<CR>
+nmap <leader>i :action GotoImplementation<CR>
+nmap <leader>u :action ShowUsages<CR>
+nmap <leader>U :action FindUsages<CR>
+nmap <C-o> :action Back<CR>
+nmap <C-b> :action ToggleLineBreakpoint<CR>
+nmap <C-i> :action Forward<CR>
+nmap <leader>a :action FindInPath<CR>
+nmap <leader>A :action FindInPath<CR>
+nmap <leader>rf :action RecentFiles<CR>
+nmap <C-S-E> :action RunClass<CR>
+nmap <C-e> :action Run<CR>
+nmap <C-S-D> :action Debug<CR>
+
+nmap <leader>S :action FileStructurePopup<CR>
+nmap <leader>D :action ShowErrorDescription<CR>
+
+" editing / refactoring
+vnoremap = :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action AutoIndentLines<CR>
+nmap == V=
+vnoremap gq :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action ReformatCode<CR>
+nmap gqq Vgq
+vnoremap gc :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action CommentByLineComment<cr>
+nmap gcc Vgc
+
+" like in vim-multiple-cursors
+nmap <leader>re :action RenameElement<CR>
+nmap <, :action MoveElementLeft<CR>
+nmap >, :action MoveElementRight<CR>
+
+nmap <leader>m :action ExtractMethod<CR>
+vmap <leader>m :action ExtractMethod<CR>
+nmap <leader>i :action Inline<CR>
+nmap <leader><S-o> :action OptimizeImports<CR>
+nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+
+imap <C-f> <C-o>:action ParameterInfo<CR>
+nmap <C-f> :action ParameterInfo<CR>

@@ -1,0 +1,278 @@
+" set vsvim_useeditordefaults
+" Ctrl + D - Edit.Delete
+" Ctrl + S + B - Build solution
+" Ctrl + Alt + S - Server Explorer
+" Ctrl + Tab - GoToNavbar
+" Ctrl + Alt + {j,k} - Shrink, Extend Sellection
+" Ctrl + {N,P} - Edit.Line Down, Up
+" Ctrl + Alt + W - Close Document Window
+" Ctrl + Shift + W - View in browser
+" Shift + F10 - Context Menu
+" Alt + R - Refresh Folder
+" Ctrl + ALT + Down - Custom Document Well
+" Ctrl + {[,]} - {Prev,Next} Tab
+" Ctrl + {j,k} - DocumentWindowNav
+" Ctrl + Alt + {[,]} - Previous,Next DocumentWindow
+" Ctrl + Alt + I - ReSharper generate file beside
+" Ctrl + Alt + S - Resharper surround with template
+set gdefault                      " substitute all occurrences in line per default
+set history=10000                  " keep x lines of command line history
+set hlsearch                      " highlight search occurrences
+set ignorecase                    " ignore case in search patterns
+set smartcase                     " no ignore case when pattern is uppercase
+set incsearch                     " show search results while typing
+set wrapscan                      " searches wrap around the end of the file
+set number                        " line numbers
+set scrolloff=5                   " keep some lines before and after the cursor visible
+set clipboard=unnamedplus,unnamed " integrate with system clipboard
+set cursorline                        " highlight current line
+set visualbell
+set autoindent
+set backspace=indent,eol,start
+
+nmap S ddko
+nmap cc S
+
+let mapleader = " "
+nnoremap <leader>l <esc>:nohls<return><esc>
+
+nnoremap j  gj
+nnoremap gj j
+nnoremap k  gk
+nnoremap gk k
+vnoremap j  gj
+vnoremap gj j
+vnoremap k  gk
+vnoremap gk k
+vnoremap $ g$
+nnoremap $ g$
+
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
+
+nnoremap gK H
+nnoremap gJ L
+vnoremap gK H
+vnoremap gJ L
+
+nnoremap vd "_d
+xnoremap x  "_d
+nnoremap vD "_D
+xnoremap P  "0p
+
+xnoremap > >gv
+xnoremap < <gv
+
+nnoremap Q @@
+
+noremap n nzz
+noremap N Nzz
+noremap * *zz
+noremap # #zz
+nnoremap } }zz
+nnoremap { {zz
+nnoremap ]] ]]zz
+nnoremap [[ [[zz
+nnoremap [ [zz
+nnoremap ][ ][zz]]
+
+nnoremap <leader>vr :source ~/.vsvimrc<cr>
+nnoremap <leader>vv :tabedit C:/Users/Milos/.vsvimrc<cr>
+
+" File {{{
+nnoremap <leader>x vsc File.SaveSelectedItems<CR> :vsc File.Close<CR>
+nnoremap <leader>Q :vsc Edit.UndoClose<CR>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :vsc Window.CloseDocumentWindow<CR>
+nnoremap <leader>p :vsc Window.PinTab<CR>
+" }}}
+
+" Build {{{
+nnoremap <leader>s :vsc Debug.Start<CR>
+nnoremap <leader>n :vsc Debug.StartWithoutDebugging<CR>
+nnoremap <leader>S :vsc Debug.StopDebugging<CR>
+
+nnoremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR>
+nnoremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR>
+nnoremap <leader>be :vsc Debug.EnableAllBreakpoints<CR>
+nnoremap <leader>bi :vsc Debug.ToggleBreakpoint<CR>
+nnoremap <leader>d :source ~/debug_map.vimrc<CR>
+nnoremap <leader>u :source ~/debug_unmap.vimrc<CR>
+" }}}
+
+" TESTS {{{
+nnoremap gwt :vsc TestExplorer.ShowTestExplorer<CR>
+
+nnoremap <Leader>tr :vsc ReSharper.ReSharper_UnitTestRunContext<CR>
+nnoremap <Leader>ta :vsc ReSharper.ReSharper_UnitTestRunSolution<CR>
+nnoremap <Leader>ts :vsc ReSharper.ReSharper_UnitTestRunCurrentSession<CR>
+
+" }}}
+
+" Search Selected Text {{{
+vnoremap // y/<C-R>"<CR>
+" }}}
+
+" Navigation {{{
+
+nnoremap <leader>ff :vsc Edit.Find<CR>
+nnoremap <leader>fr :vsc Edit.Replace<CR>
+vnoremap <leader>ff :<bs><bs><bs><bs><bs>vsc Edit.Find<CR>
+nnoremap <leader>fr :<bs><bs><bs><bs><bs>vsc Edit.Replace<CR>
+
+" Visual Studio doesn't work well with switching to next document window
+" It does nothing
+" nnoremap <Tab> :vsc Window.NextDocumentWindowNav<CR>
+
+
+"Find usages
+nnoremap <Leader>fu :vsc ReSharper.ReSharper_FindUsages<CR>
+nnoremap <Leader>fl :vsc Favorites.Addalltofavorites<CR>
+nnoremap <Leader>fd :vsc Favorites.Addtofavorites<CR>
+
+nnoremap <leader>N :vsc ReSharper.ReSharper_NavigateTo<CR>
+nnoremap <C-O> :vsc View.NavigateBackward<CR>
+nnoremap <C-I> :vsc View.NavigateForward<CR>
+
+
+
+" Go to file / member
+nnoremap gf :vsc ReSharper.ReSharper_GotoFile<CR>
+nnoremap gm :vsc ReSharper.ReSharper_GotoFileMember<CR>
+nnoremap gt :vsc ReSharper.ReSharper_GotoType<CR>
+nnoremap gr :vsc ReSharper.ReSharper_GotoRecentFiles <CR>
+nnoremap gn :vsc ReSharper.ReSharper_GotoSymbol<CR>
+
+nnoremap gR :vsc ReSharper.ReSharper_GotoRelatedFiles <return>
+nnoremap gu :vsc ReSharper.ReSharper_GotoUsage <CR>
+nnoremap gd :vsc ReSharper.ReSharper_GotoDeclaration<CR>
+nnoremap gi :vsc ReSharper.ReSharper_GotoImplementation<CR>
+nnoremap gD :vsc ReSharper.ReSharper_GoToContainingDeclaration<CR>
+nnoremap g[ :vsc ReSharper.ReSharper_GotoBase<CR>
+nnoremap g] :vsc ReSharper.ReSharper_GotoInheritors<CR
+
+nnoremap ]l :vsc ReSharper.ReSharper_ResultList_GoToNextLocation<CR>
+nnoremap [l :vsc ReSharper.ReSharper_ResultList_GoToPrevLocation<CR>
+nnoremap ]e :vsc ReSharper.ReSharper_GotoNextErrorInSolution<CR>
+nnoremap [e :vsc ReSharper.ReSharper_GotoPrevErrorInSolution<CR>
+nnoremap ]E :vsc View.NextError<CR>
+nnoremap [E :vsc View.PreviousError<CR>
+nnoremap ]m :vsc ReSharper.ReSharper_GotoNextMethod<CR>
+nnoremap [m :vsc ReSharper.ReSharper_GotoPrevMethod<CR>
+nnoremap [h :vsc ReSharper.ReSharper_GotoPrevHighlight<CR>
+nnoremap ]h :vsc ReSharper.ReSharper_GotoNextHighlight<CR>
+
+"}}}
+
+
+" Code View {{{
+nnoremap zD :vsc Edit.CollapsetoDefinitions<CR>
+nnoremap zR :vsc Edit.ExpandAllOutlining<CR>
+nnoremap zM :vsc Edit.CollapseAllOutlining<CR>
+nnoremap zc :vsc Edit.ToggleOutliningExpansion<CR>
+nnoremap zo :vsc Edit.ToggleOutliningExpansion<CR>
+nnoremap <Leader>tw :vsc Edit.ToggleWordWrap<CR>
+" }}}
+
+" Code Edit {{{
+nnoremap gcc :vsc Edit.CommentSelection<CR>
+vnoremap gc :vsc Edit.CommentSelection<CR>
+nnoremap gcu :vsc Edit.UncommentSelection<CR>
+vnoremap gcu :vsc Edit.UncommentSelection<CR>
+imap <C-Space> <C-O>:vsc ReSharper.ReSharper_CompleteCodeBasic<CR>
+
+" Move Code Right / Down / Up / Left
+nnoremap <M-h> :vsc ReSharper.ReSharper_MoveLeft<CR>
+nnoremap <M-]> :vsc ReSharper.ReSharper_MoveDown<CR>
+nnoremap <M-[> :vsc ReSharper.ReSharper_MoveUp<CR>
+nnoremap <M-l> :vsc ReSharper.ReSharper_MoveRight<CR>
+
+nnoremap <leader>ef :vsc Edit.FormatDocument<CR>
+" }}}
+
+" Refactorings {{{
+nnoremap <leader>r :vsc ReSharper.ReSharper_Rename<CR>
+nnoremap <leader>R :vsc ReSharper.ReSharper_RefactorThis<CR>
+vnoremap <leader>R :vsc ReSharper.ReSharper_RefactorThis<CR>
+vnoremap <leader>em :vsc ReSharper.ReSharper_ExtractMethod<CR>
+" nnoremap <leader>ei :vsc ReSharper.ReSharper_ExtractInter<CR>
+nnoremap <leader>ei :vsc Refactor.ExtractInterface<CR>
+
+vnoremap <leader>if :vsc ReSharper.ReSharper_IntroduceField<CR>
+vnoremap <leader>ip :vsc ReSharper.ReSharper_IntroParameter<CR>
+vnoremap <leader>iv :vsc ReSharper.ReSharper_IntroVariable<CR>
+nnoremap <leader>if vaW:vsc ReSharper.ReSharper_IntroduceField<CR>
+nnoremap <leader>iv vaW:vsc ReSharper.ReSharper_IntroVariable<CR>
+nnoremap <leader>ip vaW:vsc ReSharper.ReSharper_IntroParameter<CR>
+
+nnoremap <leader>ac :vsc Project.AddClass<CR>
+nnoremap <leader>ai :vsc Project.AddInterface<CR>
+nnoremap <leader>ar :vsc Project.AddReference<CR>
+
+nnoremap <leader>eo :vsc Edit.RemoveAndSort<CR>
+nnoremap <leader>ea :vsc View.QuickActions<CR>
+" }}}
+
+" Live templates {{{
+nnoremap <leader>ti :vsc ReSharper.ReSharper_LiveTemplates_Insert<CR>
+vmap <leader>s :vsc ReSharper.ReSharper_SurroundWith<CR>
+nnoremap <leader>tf :vsc ReSharper.ReSharper_GenerateFileBesides<CR>
+" }}}
+
+
+" Views {{{
+nnoremap gwe :vsc View.ErrorList<CR>
+nnoremap gwf :vsc View.FindResults1<CR>
+nnoremap gwm :vsc Project.ManageNuGetPackages<CR>
+nnoremap gwo :vsc View.Output<CR>
+nnoremap gwp :vsc View.PackageManagerConsole<CR>
+nnoremap gws :vsc View.SolutionExplorer<CR>
+nnoremap gwt :vsc View.ToolBox<CR>
+nnoremap gwr :vsc View.ServerExplorer<CR>
+nnoremap <leader>c :vsc View.CommandWindow<CR>
+nnoremap gs :vsc ReSharper.ReSharper_LocateInSolutionOrAssemblyExplorer<CR>
+" }}}
+
+" Window Managment {{{
+nnoremap <leader>o :vsc Window.AutoHideAll<cr>
+nnoremap <C-space>j :vsc Window.NextSplitPane<cr>
+nnoremap <C-space>k :vsc Window.PreviousSplitPane<cr>
+nnoremap <C-space>s :sp<cr>
+
+nnoremap <C-space>[ :vsc Window.MovetoPreviousTabGroup<cr>
+nnoremap <C-space>] :vsc Window.MovetoNextTabGroup<cr>
+nnoremap <C-Space>- :vsc Window.NewHorizontalTabGroup<CR>
+nnoremap <C-Space>\ :vsc Window.NewVerticalTabGroup<CR>
+" }}}
+
+
+" Visual {{{
+vnoremap at :vsc ReSharper.ReSharper_SelectContainingDeclaration<CR>
+"nnoremap zsw :vsc Edit.SelectCurrentWord<CR>
+
+noremap ]w :vsc ReSharper.ReSharper_ExtendSelection<CR>
+noremap [w :vsc ReSharper.ReSharper_ShrinkSelection<CR>
+
+noremap <leader>ep :vsc Edit.ParameterInfo<CR>
+noremap <C-Space> :vsc Edit.QuickInfo<CR>
+" }}}
+
+" MVC {{{
+nnoremap <leader>gv :vsc EditorContextMenus.CodeWindow.GoToView<CR>
+nnoremap <Leader>gc :vsc OtherContextMenus.HTMLContext.GoToController<CR>
+nnoremap <Leader>av :vsc EditorContextMenus.CodeWindow.AddView<CR>
+" }}}
+
+nnoremap <Leader>ap :vsc Tools.AttachtoProcess<CR>
+
+nnoremap <leader>vc :vsc View.ViewCode<CR>
+
+" https://github.com/aburok/mysettings/blob/master/Vim/_vsvimrc
+" https://gist.github.com/xgenvn/20e795c0f5c045419788fdc8937711b4
+" https://github.com/pescuma/dot-vim/blob/master/home/.vsvimrc
+" https://gist.github.com/MaxMEllon/c726f97b97b1e4037da5
+" https://github.com/justinmk/config/blob/master/.vsvimrc
+" https://gist.github.com/DJMcMayhem/64af160b9c3326ea701d4342cf13a95c
+" https://autohotkey.com/board/topic/42060-capslock-to-modify-jkim-to-arrows-but-support-modifiers/
