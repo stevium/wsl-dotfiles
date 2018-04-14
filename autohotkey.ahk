@@ -7,7 +7,8 @@ WinSet, Style, ^0xC00000, A
 return
 
 ; {Up,Down}
-if ShouldMapArrows() {
+#If ShouldMapArrows()
+{
   ^P::Send {Up}
   ^N::Send {Down}
 }
@@ -16,7 +17,8 @@ if ShouldMapArrows() {
 Appskey::Send +{F10}
 
 ; Open Wsl when Windows Explorer is open
-#If WinActive("ahk_class ExploreWClass|CabinetWClass") || IsDesktopActive() {
+#If WinActive("ahk_class ExploreWClass|CabinetWClass") || IsDesktopActive()
+{
   ^t::OpenWsl()
 }
 
@@ -42,7 +44,7 @@ OpenWsl() {
     EnvGet, vUserProfile, USERPROFILE
     currentPath := vUserProfile . "\Desktop"
   }
-  rlse {
+  else {
     for w in ComObjCreate("Shell.Application").Windows
     currentPath := w.Document.Folder.Self.Path
   }
