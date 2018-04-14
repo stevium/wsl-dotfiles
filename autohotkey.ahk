@@ -26,10 +26,10 @@ ShouldMapArrows() {
   WinGetTitle, Title, A
   return InStr(Title, "JetPopup")
     || InStr(Title, "Visual Studio")
-    || InStr(Title, "QuickWatch")
-    || InStr(Title, "Add Scaffold")
-    || InStr(Title, "Cortana")
-    || InStr(Title, "Run")
+    || Title == "QuickWatch"
+    || Title == "Add Scaffold"
+    || Title == "Cortana"
+    || Title == "Run"
     || WinActive("ahk_class ExploreWClass|CabinetWClass")
 }
 
