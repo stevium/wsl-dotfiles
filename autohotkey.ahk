@@ -13,6 +13,17 @@ return
   ^N::Send {Down}
 }
 
+#IfWinActive ahk_class MultitaskingViewFrame
+!k::up
+!h::left
+!j::down
+!l::right
+k::up
+h::left
+j::down
+l::right
+#IfWinActive
+
 ; Context Menu
 Appskey::Send +{F10}
 
