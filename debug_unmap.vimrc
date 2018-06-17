@@ -1,15 +1,3 @@
 nunmap s
-nunmap n
-nunmap f
-nunmap q
-vunmap q
-nunmap a
-nunmap <Enter>cs
-nunmap <Enter>b
-nunmap <Enter>a
-nunmap <Enter>l
-nunmap <Enter>d
-nunmap <Enter>ww
-nunmap <Enter>wj
-nunmap <Enter>wk
-nunmap <Enter>wl
+nunmap ;
+nunmap ,
