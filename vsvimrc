@@ -1,46 +1,63 @@
 " set vsvim_useeditordefaults
-" Ctrl + D - Edit.Delete
-" Ctrl + Shift + B - Build solution
+"--------------------------------------------------------------------------------
+" Custom Visual Studio Shortcut
+"--------------------------------------------------------------------------------
+" <C--> :vsc View.ZoomOut<CR>
+" <C-+> :vsc View.ZoomIn<CR>
 " Ctrl + Tab - MoveToNavgationBar
-" Ctrl + {A,X} - Extend, Shrink Sellection
+"--------------------------------------------------------------------------------
+" Selection
+"--------------------------------------------------------------------------------
+" Ctrl + Shift + {F,D} - Extend, Shrink Sellection
 " Ctrl + Shift + A - SelectContainingDeclaration
-" Ctrl + {N,P} - Edit.Line Down, Up
-" Ctrl + Alt + W - Close Document Window
-" Ctrl + Shift + W - View in browser
-" Shift + F10 - Context Menu
-" Alt + R - Refresh Folder
-" Alt + W - Custom Document Well
-" Ctrl + {j,k} - {Prev,Next} Tab
-" Ctrl + Alt + {j,k} - {Previous,Next} DocumentWindow
-" Ctrl + Alt + I - ReSharper generate file beside
-" Ctrl + Alt + S - Resharper surround with template
-" Ctrl + R - Edit.Replace
-" Ctrl + F - Edit.Find
 " Alt-J - Edit.MoveSelectedLinesDown
 " Alt-K - Edit.MoveSelectedLinesUp
 " Alt-Shift-J - ReSharper.ReSharper_MoveDown
 " Alt-Shidt-K - ReSharper.ReSharper_MoveUp
 " Alt-L - ReSharper.ReSharper_MoveRight
 " Alt-H - ReSharper.ReSharper_MoveLeft
-" Ctrl-N - Edit.GoToFindResults1NextLocation
-" Ctrl-Shift-N - Edit.GoToFindResults1PrevLocation
-" Ctrl-M - Edit.GoToFindResults2NextLocation
-" Ctrl-Shift-M - Edit.GoToFindResults2PrevLocation
 "--------------------------------------------------------------------------------
-" Views
+" Fid Results
 "--------------------------------------------------------------------------------
-" Alt-- View.SolutionExplorer
-" Alt-e View.ErrorList
-" Alt-f View.FindResults
-" Alt-n Project.ManageNuGetPackages
-" Alt-o View.Output
-" Alt-m View.PackageManagerConsole
-" Alt-b View.ToolBox
-" Alt-r View.ServerExplorer
-" Alt-p View.PropertiesWindow
-" Alt-t TestExplorer.ShowTestExplorer
-" Alt-c View.CommandWindow
-" Alt-g View.TfsTeamExplorer
+" Ctrl-; - Edit.GoToFindResults1NextLocation
+" Ctrl-, - Edit.GoToFindResults1PrevLocation
+" Ctrl + Shift + ; - Edit.GoToFindResults2NextLocation
+" Ctrl + Shift + , - Edit.GoToFindResults2PrevLocation
+"--------------------------------------------------------------------------------
+" Windows
+"--------------------------------------------------------------------------------
+" Ctrl + {J,K} - {Prev,Next} Tab
+" Ctrl + Alt + {J,K} - {Previous,Next} DocumentWindow
+" Alt + E - ShowEzDMFileList
+" Alt + W - Close Document Window
+" Alt + Q - Window.Hide
+" Alt + D - Window.Dock
+" Alt + P - KeepTabOpen (Pin)
+" Alt+Shift-- View.SolutionExplorer
+" Alt+Shift-e View.ErrorList
+" Alt+Shift-1 View.FindResults1
+" Alt+Shift-2 View.FindResults2
+" Alt+Shift-n Project.ManageNuGetPackages
+" Alt+Shift-o View.Output
+" Alt+Shift-m View.PackageManagerConsole
+" Alt+Shift-b View.ToolBox
+" Alt+Shift-r View.ServerExplorer
+" Alt+Shift-p View.PropertiesWindow
+" Alt+Shift-t TestExplorer.ShowTestExplorer
+" Alt+Shift-c View.CommandWindow
+" Alt+Shift-v View.TfsTeamExplorer
+" Alt+Shift-j View.ObjectBrowser
+"--------------------------------------------------------------------------------
+" Find New Shortcuts???
+"--------------------------------------------------------------------------------
+" Ctrl + D - Edit.Delete
+" Ctrl + Shift + W - View in browser
+" Shift + F10 - Context Menu
+" Alt + R - Refresh Folder
+" Ctrl + Alt + I - ReSharper generate file beside
+" Ctrl + Alt + S - Resharper surround with template
+" Ctrl + R - Edit.Replace
+" Ctrl + F - Edit.Find
 
 "--------------------------------------------------------------------------------
 " Settings 
@@ -52,7 +69,7 @@ set smartcase                     " no ignore case when pattern is uppercase
 set incsearch                     " show search results while typing
 set wrapscan                      " searches wrap around the end of the file
 set number                        " line numbers
-set scrolloff=5                   " keep some lines before and after the cursor visible
+set scrolloff=4                   " keep some lines before and after the cursor visible
 set clipboard=unnamedplus,unnamed " integrate with system clipboard
 set cursorline                    " highlight current line
 set visualbell
@@ -109,13 +126,13 @@ nnoremap ][ ][zz]]
 " General
 "--------------------------------------------------------------------------------
 nnoremap <C-Space>s :source ~/.vsvimrc<CR>
-nnoremap <C-Space>e :tabedit C:/Users/Milos/.vsvimrc<CR>
+nnoremap <C-Space>v :tabedit C:/Users/Milos/.vsvimrc<CR>
 nnoremap <C-Space>d :tabedit C:/Users/Milos/debug_map.vimrc<CR>
 nnoremap <C-Space>u :tabedit C:/Users/Milos/debug_unmap.vimrc<CR>
 
-nnoremap K :vsc Help.F1Help <return>
+noremap K :vsc Help.F1Help <return>
 
-noremap <leader>h :vsc Edit.QuickInfo<CR>
+noremap <leader>i :vsc Edit.QuickInfo<CR>
 noremap <C-Space> :vsc Edit.ParameterInfo<CR>
 noremap <leader>w :w<CR>
 noremap <leader>n <esc>:nohls<return><esc>
@@ -139,30 +156,24 @@ noremap za:vsc Edit.ToggleOutliningExpansion <return>
 noremap zA :vsc Edit.ToggleAllOutlining <return>
 noremap zd :vsc Edit.CollapsetoDefinitions <return>
 
-" Zoom In/Out
-nnoremap <C--> :vsc View.ZoomOut<CR>
-nnoremap <C-+> :vsc View.ZoomIn<CR>
 
 "--------------------------------------------------------------------------------
 " Code Formating
 "--------------------------------------------------------------------------------
 " Comments
-vnoremap gc :vsc ReSharper.ReSharper_LineComment<CR>
-nnoremap gcc :vsc ReSharper.ReSharper_LineComment<CR>
+vnoremap gc :vsc Edit.ToggleComment<CR>
+nnoremap gcc :vsc Edit.ToggleComment<CR>
+nnoremap gcu :vsc Edit.UncommentSelection<CR>
 
-nnoremap <leader>ef :vsc Edit.FormatDocument<CR>
+noremap <leader>ef :vsc Edit.FormatDocument<CR>
 noremap <leader>eo :vsc Edit.RemoveAndSort<CR>
 
 "--------------------------------------------------------------------------------
 " Debug 
 "--------------------------------------------------------------------------------
-noremap <leader>ds :source ~/debug_unmap.vimrc<CR>:vsc Debug.StopDebugging<CR>
-noremap <leader>dn :vsc Debug.StartWithoutDebugging<CR>
-noremap <leader>dd :source ~/debug_map.vimrc<CR>:vsc Debug.Start<CR>
-noremap <leader>bb :vsc Debug.ToggleBreakpoint<CR>
-noremap <leader>be :vsc Debug.EnableAllBreakpoints<CR>
-noremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR>
-noremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR>
+noremap <leader>sd :source ~/debug_map.vimrc<CR>:vsc Debug.Start<CR>
+noremap <leader>ss :vsc Debug.StartWithoutDebugging<CR>
+noremap <leader>S :source ~/debug_unmap.vimrc<CR>:vsc Debug.StopDebugging<CR>
 noremap <leader>dq :vsc Debug.QuickWatch<CR>
 noremap <leader>dd :vsc Debug.AddWatch<CR>
 noremap <leader>d1 :vsc Debug.Watch1<CR>
@@ -176,12 +187,21 @@ noremap <leader>dl :vsc Debug.Locals<CR>
 noremap <leader>dt :vsc Debug.DiagnosticTools.Show<CR>
 " nnoremap <Leader>ap :vsc Tools.AttachtoProcess<CR>
 
+noremap <leader>bb :vsc Debug.ToggleBreakpoint<CR>
+noremap <leader>be :vsc Debug.EnableAllBreakpoints<CR>
+noremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR>
+noremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR>
+
+noremap <leader>bc :vsc Build.ConfigurationManager<CR>
+noremap <leader>bs :vsc Build.RebuildSolution<CR>
+noremap <leader>bp :vsc Build.RebuildOnlyProject<CR>
+
 "--------------------------------------------------------------------------------
 " Tests
 "--------------------------------------------------------------------------------
-noremap <Leader>ur :vsc ReSharper.ReSharper_UnitTestRunContext<CR>
-noremap <Leader>ua :vsc ReSharper.ReSharper_UnitTestRunSolution<CR>
-noremap <Leader>us :vsc ReSharper.ReSharper_UnitTestRunCurrentSession<CR>
+"noremap <Leader>ur :vsc ReSharper.ReSharper_UnitTestRunContext<CR>
+"noremap <Leader>ua :vsc ReSharper.ReSharper_UnitTestRunSolution<CR>
+"noremap <Leader>us :vsc ReSharper.ReSharper_UnitTestRunCurrentSession<CR>
 
 noremap <leader>tt :vsc TestExplorer.DebugAllTestsInContext <return>
 noremap <leader>tT :vsc TestExplorer.RunAllTests <return>
@@ -297,13 +317,10 @@ noremap <leader>q :vsc Window.CloseDocumentWindow<CR>
 noremap <leader>Q :vsc File.UndoClose<CR>
 noremap <leader>o :vsc Window.AutoHideAll<CR>
 noremap <M-p> :vsc Window.PinTab<CR>
-nnoremap <C-w>o :vsc FullScreen <cr>
 
 " Splits
-nnoremap <C-w>s :sp <cr>
-nnoremap <C-w>v :vsp <cr>
-nnoremap <c-j> :vsc Window.NextSplitPane<cr>
-nnoremap <c-k> :vsc Window.PreviousSplitPane<cr>
+nnoremap <leader>j :vsc Window.NextSplitPane<cr>
+nnoremap <leader>k :vsc Window.PreviousSplitPane<cr>
 nnoremap <C-space>j :vsc Tools.NavigateTabGroups.Down<cr>
 nnoremap <C-space>k :vsc Tools.NavigateTabGroups.Up<cr>
 nnoremap <C-space>h :vsc Tools.NavigateTabGroups.Left<cr>
@@ -320,3 +337,12 @@ noremap g// :vsc Edit.FindinFiles<cr>
 noremap g/r :vsc Edit.ReplaceinFiles<cr>
 noremap <leader>e :vsc Edit.Replace<cr>
 noremap g/u :vsc ReSharper.ReSharper_FindUsages<CR> 
+
+"--------------------------------------------------------------------------------
+" Hierarchy
+"--------------------------------------------------------------------------------
+noremap <leader>hh :vsc ReSharper.ReSharper_ShowTypesDependencies<CR>
+noremap <leader>hp :vsc ReSharper.ReSharper_ShowProjectDependencyGraph<CR>
+noremap <leader>hc :vsc ReSharper.ReSharper_TypeHierarchyClassHierarchy<CR>
+noremap <leader>hw :vsc ReSharper.ReSharper_ShowHierarchyWindow<CR>
+noremap <leader>hs :vsc ReSharper.ReSharper_StyleHierarchyStyleHierarchy<CR>
