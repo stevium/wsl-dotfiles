@@ -125,10 +125,10 @@ nnoremap ][ ][zz]]
 "--------------------------------------------------------------------------------
 " General
 "--------------------------------------------------------------------------------
-nnoremap <C-Space>s :source ~/.vsvimrc<CR>
-nnoremap <C-Space>v :tabedit C:/Users/Milos/.vsvimrc<CR>
-nnoremap <C-Space>d :tabedit C:/Users/Milos/debug_map.vimrc<CR>
-nnoremap <C-Space>u :tabedit C:/Users/Milos/debug_unmap.vimrc<CR>
+nnoremap <C-Space>s :source $USERPROFILE/.vsvimrc<CR>
+nnoremap <C-Space>v :tabe C:/Users/Milos/.vsvimrc<CR>
+nnoremap <C-Space>d :tabe C:/Users/Milos/.debug_map.vimrc<CR>
+nnoremap <C-Space>u :tabe C:/Users/Milos/.debug_unmap.vimrc<CR>
 
 noremap K :vsc Help.F1Help <return>
 
