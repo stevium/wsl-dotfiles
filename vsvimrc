@@ -302,11 +302,11 @@ vmap <leader>rs :vsc ReSharper.ReSharper_SurroundWith<CR>
 " Generate
 "--------------------------------------------------------------------------------
 noremap <leader>gg :vsc ReSharper.ReSharper_Generate<CR>
-noremap <leader>gc :vsc ReSharper.ReSharper_GenerateConstructor<CR>
-noremap <leader>go :vsc ReSharper.ReSharper_GenerateOverrides<CR>
-noremap <leader>gd :vsc ReSharper.ReSharper_GenerateDelegating<CR>
-noremap <leader>gp :vsc ReSharper.ReSharper_GenerateProperties<CR>
-noremap <leader>gf :vsc ReSharper.ReSharper_GenerateFileBesides<CR>
+noremap <leader>gc :vsc ReSharper_GenerateConstructor<CR>
+noremap <leader>go :vsc ReSharper_GenerateOverrides<CR>
+noremap <leader>gd :vsc ReSharper_GenerateDelegating<CR>
+noremap <leader>gp :vsc ReSharper_GenerateProperties<CR>
+noremap <leader>gf :vsc ReSharper_GenerateFileBesides<CR>
 
 "--------------------------------------------------------------------------------
 " Window Managment
