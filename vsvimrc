@@ -171,9 +171,9 @@ noremap <leader>eo :vsc Edit.RemoveAndSort<CR>
 "--------------------------------------------------------------------------------
 " Debug 
 "--------------------------------------------------------------------------------
-noremap <leader>sd :source ~/debug_map.vimrc<CR>:vsc Debug.Start<CR>
+noremap <leader>sd :source ~/.debug_map.vimrc<CR>:vsc Debug.Start<CR>
 noremap <leader>ss :vsc Debug.StartWithoutDebugging<CR>
-noremap <leader>S :source ~/debug_unmap.vimrc<CR>:vsc Debug.StopDebugging<CR>
+noremap <leader>S :source ~/.debug_unmap.vimrc<CR>:vsc Debug.StopDebugging<CR>
 noremap <leader>dq :vsc Debug.QuickWatch<CR>
 noremap <leader>dd :vsc Debug.AddWatch<CR>
 noremap <leader>d1 :vsc Debug.Watch1<CR>
