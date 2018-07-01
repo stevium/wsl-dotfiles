@@ -84,7 +84,7 @@ set autoindent
 
 let mapleader = " "
 
-nmap S ddko
+nnoremap S ddko
 nmap cc S
 
 nnoremap j  gj
@@ -296,7 +296,7 @@ noremap <leader>ai :vsc Project.AddInterface<CR>
 noremap <leader>ar :vsc Project.AddReference<CR>
 
 nnoremap <leader>rl :vsc ReSharper.ReSharper_LiveTemplates_Insert<CR>
-vmap <leader>rs :vsc ReSharper.ReSharper_SurroundWith<CR>
+vmap S :vsc ReSharper.ReSharper_SurroundWith<CR>
 
 "--------------------------------------------------------------------------------
 " Generate
