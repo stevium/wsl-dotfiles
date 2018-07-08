@@ -89,14 +89,6 @@ let mapleader = " "
 nnoremap S ddko
 nmap cc S
 
-nnoremap j  gj
-nnoremap gj j
-nnoremap k  gk
-nnoremap gk k
-vnoremap j  gj
-vnoremap gj j
-vnoremap k  gk
-vnoremap gk k
 vnoremap $ g$
 nnoremap $ g$
 
@@ -104,8 +96,6 @@ nnoremap $ g$
 nnoremap g; u<c-r>
 
 nnoremap vd "_d
-xnoremap x  "_d
-nnoremap vD "_D
 xnoremap P  "0p
 
 xnoremap > >gv
