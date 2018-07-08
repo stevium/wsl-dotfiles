@@ -27,26 +27,28 @@ vmap af :vsc ReSharper.ReSharper_ExtendSelection<CR>
 " Windows
 "--------------------------------------------------------------------------------
 " Ctrl + {J,K} - {Prev,Next} Tab
-" Ctrl + Alt + {J,K} - {Previous,Next} DocumentWindow
-" Alt + E - ShowEzDMFileList
-" Alt + W - Close Document Window
-" Alt + Q - Window.Hide
-" Alt + D - Window.Dock
-" Alt + P - KeepTabOpen (Pin)
-" Alt+Shift-- View.SolutionExplorer
-" Alt+Shift-e View.ErrorList
-" Alt+Shift-1 View.FindResults1
-" Alt+Shift-2 View.FindResults2
-" Alt+Shift-n Project.ManageNuGetPackages
-" Alt+Shift-o View.Output
-" Alt+Shift-m View.PackageManagerConsole
-" Alt+Shift-b View.ToolBox
-" Alt+Shift-r View.ServerExplorer
-" Alt+Shift-p View.PropertiesWindow
-" Alt+Shift-t TestExplorer.ShowTestExplorer
-" Alt+Shift-c View.CommandWindow
-" Alt+Shift-v View.TfsTeamExplorer
-" Alt+Shift-j View.ObjectBrowser
+" Ctrl + Shift + {J,K} - {Previous,Next} DocumentWindow
+" Ctrl + Shif + E - ShowEzDMFileList
+" Ctrl + Shif + Q - Close Document Window
+" Ctrl + Shif + W - Window.Hide
+" Ctrl + Shif + D - Window.Dock
+" Ctrl + Shif + P - KeepTabOpen (Pin)
+" Ctrl + Shif + F - Window.Float (Pin)
+" Ctrl + Shif + M - Window.MoveToMainDocumentGroup (Pin)
+" Alt + W, H - - View.SolutionExplorer
+" Alt + W, H - e View.ErrorList
+" Alt + W, H - 1 View.FindResults1
+" Alt + W, H - 2 View.FindResults2
+" Alt + W, H - n Project.ManageNuGetPackages
+" Alt + W, H - o View.Output
+" Alt + W, H - m View.PackageManagerConsole
+" Alt + W, H - b View.ToolBox
+" Alt + W, H - r View.ServerExplorer
+" Alt + W, H - p View.PropertiesWindow
+" Alt + W, H - t TestExplorer.ShowTestExplorer
+" Alt + W, H - c View.CommandWindow
+" Alt + W, H - v View.TfsTeamExplorer
+" Alt + W, H - j View.ObjectBrowser
 "--------------------------------------------------------------------------------
 " Find New Shortcuts???
 "--------------------------------------------------------------------------------
