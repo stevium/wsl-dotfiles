@@ -185,8 +185,9 @@ noremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR>
 noremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR>
 
 noremap <leader>bc :vsc Build.ConfigurationManager<CR>
-noremap <leader>bs :vsc Build.RebuildSolution<CR>
-noremap <leader>bp :vsc Build.RebuildOnlyProject<CR>
+noremap <leader>sr :vsc Build.RebuildSolution<CR>
+noremap <leader>sb :vsc Build.BuildSolution<CR>
+noremap <leader>sp :vsc Build.RebuildOnlyProject<CR>
 
 "--------------------------------------------------------------------------------
 " Tests
