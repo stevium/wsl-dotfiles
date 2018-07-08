@@ -8,7 +8,6 @@
 "--------------------------------------------------------------------------------
 " Selection
 "--------------------------------------------------------------------------------
-" Ctrl + Shift + {F,D} - Extend, Shrink Sellection
 " Ctrl + Shift + A - SelectContainingDeclaration
 " Alt-J - Edit.MoveSelectedLinesDown
 " Alt-K - Edit.MoveSelectedLinesUp
@@ -16,6 +15,8 @@
 " Alt-Shidt-K - ReSharper.ReSharper_MoveUp
 " Alt-L - ReSharper.ReSharper_MoveRight
 " Alt-H - ReSharper.ReSharper_MoveLeft
+" Ctrl + A + F - ReSharper.ReSharper_ShrinkSelection
+vmap af :vsc ReSharper.ReSharper_ExtendSelection<CR>
 "--------------------------------------------------------------------------------
 " Fid Results
 "--------------------------------------------------------------------------------
