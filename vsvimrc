@@ -334,8 +334,8 @@ noremap g/u :vsc ReSharper.ReSharper_FindUsages<CR>
 "--------------------------------------------------------------------------------
 " Hierarchy
 "--------------------------------------------------------------------------------
-noremap <leader>hh :vsc ReSharper.ReSharper_ShowTypesDependencies<CR>
+noremap <leader>ht :vsc ReSharper.ReSharper_ShowTypesDependencies<CR>
 noremap <leader>hp :vsc ReSharper.ReSharper_ShowProjectDependencyGraph<CR>
 noremap <leader>hc :vsc ReSharper.ReSharper_TypeHierarchyClassHierarchy<CR>
-noremap <leader>hw :vsc ReSharper.ReSharper_ShowHierarchyWindow<CR>
 noremap <leader>hs :vsc ReSharper.ReSharper_StyleHierarchyStyleHierarchy<CR>
+"Alt + W, H - vsc ReSharper.ReSharper_ShowHierarchyWindow
