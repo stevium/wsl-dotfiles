@@ -13,7 +13,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\n# map <c-e> scrollDown\n# map <c-y> scrollup\n# map <c-d> scrollPageDown\n# map <c-u> scrollPageUp\nmap <c-f> scrollFullPageDown\nmap <c-b> scrollFullPageUp\nmap xh closeTabsOnLeft\nmap xl closeTabsOnRight\nmap X closeOtherTabs\nmap q removeTab\nmap Q restoreTab\n# unmap j\n# unmap k\n# unmap d\n# unmap u",
+  "keyMappings": "# Insert your preferred key mappings here.\n# map <c-e> scrollDown\n# map <c-y> scrollup\n# map <c-d> scrollPageDown\n# map <c-u> scrollPageUp\n# map <c-f> scrollFullPageDown\n# map <c-b> scrollFullPageUp\nmap xh closeTabsOnLeft\nmap xl closeTabsOnRight\nmap X closeOtherTabs\nmap q removeTab\nmap Q restoreTab\nunmap x\n# unmap k\n# unmap d\n# unmap u",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
