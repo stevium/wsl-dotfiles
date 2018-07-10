@@ -1,4 +1,3 @@
-" set vsvim_useeditordefaults
 " Ctrl + D - Edit.Delete
 " Ctrl + S + B - Build solution
 " Ctrl + Alt + S - Server Explorer
@@ -108,7 +107,6 @@ nnoremap gwt :vsc TestExplorer.ShowTestExplorer<CR>
 nnoremap <Leader>tr :vsc ReSharper.ReSharper_UnitTestRunContext<CR>
 nnoremap <Leader>ta :vsc ReSharper.ReSharper_UnitTestRunSolution<CR>
 nnoremap <Leader>ts :vsc ReSharper.ReSharper_UnitTestRunCurrentSession<CR>
-
 " }}}
 
 " Search Selected Text {{{
@@ -116,7 +114,6 @@ vnoremap // y/<C-R>"<CR>
 " }}}
 
 " Navigation {{{
-
 nnoremap <leader>ff :vsc Edit.Find<CR>
 nnoremap <leader>fr :vsc Edit.Replace<CR>
 vnoremap <leader>ff :<bs><bs><bs><bs><bs>vsc Edit.Find<CR>
@@ -163,7 +160,6 @@ nnoremap ]m :vsc ReSharper.ReSharper_GotoNextMethod<CR>
 nnoremap [m :vsc ReSharper.ReSharper_GotoPrevMethod<CR>
 nnoremap [h :vsc ReSharper.ReSharper_GotoPrevHighlight<CR>
 nnoremap ]h :vsc ReSharper.ReSharper_GotoNextHighlight<CR>
-
 "}}}
 
 
@@ -263,16 +259,15 @@ noremap <C-Space> :vsc Edit.QuickInfo<CR>
 nnoremap <leader>gv :vsc EditorContextMenus.CodeWindow.GoToView<CR>
 nnoremap <Leader>gc :vsc OtherContextMenus.HTMLContext.GoToController<CR>
 nnoremap <Leader>av :vsc EditorContextMenus.CodeWindow.AddView<CR>
+nnoremap <leader>vc :vsc View.ViewCode<CR>
 " }}}
 
 nnoremap <Leader>ap :vsc Tools.AttachtoProcess<CR>
 
-nnoremap <leader>vc :vsc View.ViewCode<CR>
-
+" Additional sources
 " https://github.com/aburok/mysettings/blob/master/Vim/_vsvimrc
 " https://gist.github.com/xgenvn/20e795c0f5c045419788fdc8937711b4
 " https://github.com/pescuma/dot-vim/blob/master/home/.vsvimrc
 " https://gist.github.com/MaxMEllon/c726f97b97b1e4037da5
 " https://github.com/justinmk/config/blob/master/.vsvimrc
 " https://gist.github.com/DJMcMayhem/64af160b9c3326ea701d4342cf13a95c
-" https://autohotkey.com/board/topic/42060-capslock-to-modify-jkim-to-arrows-but-support-modifiers/
