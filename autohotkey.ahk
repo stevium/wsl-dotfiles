@@ -6,42 +6,49 @@ LWIN & B::
 WinSet, Style, ^0xC00000, A
 return
 
-; {Up,Down}
-#If ShouldMapArrows()
-{
-  ^P::Send {Up}
-  ^N::Send {Down}
+; Up
+$^p::
+If (ShouldMapArrows()) {
+  send {Up}
+} else {
+  send ^p
 }
+return
 
-#IfWinActive ahk_class MultitaskingViewFrame
-!k::up
-!h::left
-!j::down
-!l::right
-k::up
-h::left
-j::down
-l::right
-#IfWinActive
+; Down
+$^n::
+If (ShouldMapArrows()) {
+  send {Down}
+} else {
+  send ^n
+}
+return
+
+ShouldMapArrows() {
+  WindowTitles := ["JetPopup", "Visual Studio", "QuickWatch", "Add Scaffold", "Cortana"]
+  WindowClasses := ["ahk_class ExploreWClass|CabinetWClass"]
+  ShouldMap := 0
+
+  WinGetTitle, Title, A
+  for index, element in WindowTitles
+  {
+    ShouldMap := ShouldMap || InStr(Title, element)
+  }
+
+  for index, element in WindowClasses
+  {
+    ShouldMap := ShouldMap || WinActive(element)
+  }
+
+  return ShouldMap
+}
 
 ; Context Menu
 Appskey::Send +{F10}
 
 ; Open Wsl when Windows Explorer is open
-#If WinActive("ahk_class ExploreWClass|CabinetWClass") || IsDesktopActive()
-{
+#If WinActive("ahk_class ExploreWClass|CabinetWClass") || IsDesktopActive() {
   ^t::OpenWsl()
-}
-
-ShouldMapArrows() {
-  WinGetTitle, Title, A
-  return InStr(Title, "JetPopup")
-    || InStr(Title, "Visual Studio")
-    || Title == "QuickWatch"
-    || Title == "Add Scaffold"
-    || Title == "Cortana"
-    || Title == "Run"
-    || WinActive("ahk_class ExploreWClass|CabinetWClass")
 }
 
 OpenWsl() {
