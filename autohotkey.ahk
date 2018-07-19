@@ -47,7 +47,8 @@ ShouldMapArrows() {
 Appskey::Send +{F10}
 
 ; Open Wsl when Windows Explorer is open
-#If WinActive("ahk_class ExploreWClass|CabinetWClass") || IsDesktopActive() {
+#If WinActive("ahk_class ExploreWClass|CabinetWClass") || IsDesktopActive() 
+{
   ^t::OpenWsl()
 }
 
