@@ -153,10 +153,16 @@ vmap g/r :<bs><bs><bs><bs><bs>promptrepl<CR>
 " Alt + Shift + ; ------> JumpToLastChange<CR>
 " Alt + Shift + : ------> JumpToNextChange<CR>
 
+" nmap s :action AceAction<CR>
+" nmap \w :action AceWordForwardAction<CR>
+" nmap \W :action AceWordBackwardsAction<CR>
+
 nmap <C-o> :action Back<CR>
 nmap <C-i> :action Forward<CR>
 
 nmap <leader>i :action ShowErrorDescription<CR>
+nmap <leader>d :action QuickJavaDoc<CR>
+nmap <leader>D :action QuickImplementations<CR>
 
 nmap ]e :action GotoNextError<CR>
 nmap [e :action GotoPreviousError<CR>
@@ -168,7 +174,7 @@ nmap ]c /\\<trait\>\\\|\\<class\>\\\|\\<object\>\\\|\\<interface\>\\\|\\<enum\><
 nmap [c b?\\<trait\>\\\|\\<class\>\\\|\\<object\>\\\|\\<interface\>\\\|\\<enum\><CR>w:nohlsearch<CR>
 
 "--------------------------------------------------------------------------------
-" Window Managment
+" Window Management
 "--------------------------------------------------------------------------------
 " simple closing and saving
 nnoremap <leader>w :w<CR>
@@ -176,7 +182,7 @@ nnoremap <leader>X :action Exit<CR>
 nnoremap <leader>x :action CloseAllEditorsButActive<CR>
 nnoremap <leader>q :action CloseEditor<CR>
 nnoremap <leader>Q :action ReopenClosedTab<CR>
-nnoremap <leader>O :action HideAllWindows<CR>:action VimWindowOnly<CR>
+nnoremap <leader>O :action VimWindowOnly<CR>:action ActivateProjectToolWindow<CR>:action HideAllWindows<CR>
 nnoremap <leader>o :action HideAllWindows<CR>
 " splits
 nnoremap <C-space>- :action VimWindowSplitHorizontal<cr>
@@ -201,8 +207,6 @@ nmap <leader>ss :action RunClass<CR>
 nmap <leader>sr :action Run<CR>
 nmap <leader>sd :source ~/.debug_map.ideavimrc<CR>:action Debug<CR>
 nmap <leader>S :source ~/.debug_unmap.ideavimrc<CR>:action Stop<CR>
-
-nmap <leader>D :action ShowErrorDescription<CR>
 
 "--------------------------------------------------------------------------------
 " Refactoring actions
