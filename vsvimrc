@@ -119,15 +119,16 @@ nnoremap ][ ][zz]]
 "--------------------------------------------------------------------------------
 " General
 "--------------------------------------------------------------------------------
-nnoremap <C-Space>s :source $USERPROFILE/.vsvimrc<CR>
-nnoremap <C-Space>v :tabe C:/Users/Milos/.vsvimrc<CR>
-nnoremap <C-Space>d :tabe C:/Users/Milos/.debug_map.vimrc<CR>
-nnoremap <C-Space>u :tabe C:/Users/Milos/.debug_unmap.vimrc<CR>
+nnoremap <S-Space>s :source $USERPROFILE/.vsvimrc<CR>
+nnoremap <S-Space>v :tabe C:\Users\mstevanovic2\.vsvimrc<CR>
+nnoremap <S-Space>d :tabe C:\Users\mstevanovic2\.debug_map.vimrc<CR>
+nnoremap <S-Space>u :tabe C:\Users\mstevanovic2\.debug_unmap.vimrc<CR>
 
 noremap K :vsc Help.F1Help <return>
 
 noremap <leader>i :vsc Edit.QuickInfo<CR>
-noremap <C-Space> :vsc Edit.ParameterInfo<CR>
+"nnoremap <C-S-Space> :vsc ReSharper.ReSharper_ParameterInfoShow<CR>
+"imap <C-S-Space> <ESC>:vsc ReSharper.ReSharper_ParameterInfoShow<CR>a
 noremap <leader>w :w<CR>
 noremap <leader>n <esc>:nohls<return><esc>
 
@@ -139,7 +140,8 @@ noremap <leader>; A;<Esc>
 noremap <leader>, lbithis.<Esc>
 
 " Intellisense 
-imap <C-Space> <C-O>:vsc ReSharper.ReSharper_CompleteCodeBasic<CR>
+"imap <C-Space> <ESC>:vsc ReSharper.ReSharper_CompleteCodeBasic<CR>a
+"nnoremap <C-Space> :vsc ReSharper.ReSharper_CompleteCodeBasic<CR>
 
 " Folding
 noremap zc :vsc Edit.CollapseCurrentRegion <return>
@@ -219,12 +221,14 @@ noremap <leader>ts :vsc TestExplorer.CancelTests <return>
 "--------------------------------------------------------------------------------
 noremap <C-O> :vsc View.NavigateBackward<CR>
 noremap <C-I> :vsc View.NavigateForward<CR>
-noremap <leader>c :vsc ReSharper_AltEnter<CR>
 noremap - :vsc ReSharper.ReSharper_LocateInSolutionOrAssemblyExplorer<CR>
+noremap <leader>/ :vsc View.BashConsole<CR>
+noremap <leader>. :vsc View.CmdConsole<CR>
 
 noremap gf :vsc ReSharper.ReSharper_GotoFile<CR>
 noremap gm :vsc ReSharper.ReSharper_GotoFileMember<CR>
-noremap gt :vsc ReSharper.ReSharper_GotoType<CR>
+noremap gt :vsc ReSharper.ReSharper_GotoText<CR>
+noremap <leader>a :vsc ReSharper.ReSharper_GotoType<CR>
 noremap gT :vsc ReSharper.ReSharper_GotoTypeDeclaration <return>
 noremap gr :vsc ReSharper.ReSharper_GotoRecentFiles <CR>
 noremap gR :vsc ReSharper.ReSharper_GotoRelatedFiles <return>
@@ -263,13 +267,26 @@ noremap ]h :vsc ReSharper.ReSharper_GotoNextHighlight<CR>
 "-------------------------------------------------------------------------------
 " Bookmarks / Marks
 "-------------------------------------------------------------------------------
-nnoremap <Leader>mm :vsc Edit.ToggleBookmark<cr>
-nnoremap <Leader>mM :vsc Edit.ToggleBookmark<cr>:vsc View.BookmarkWindow<cr>
-nnoremap <Leader>md :vsc Edit.ClearAllBookmarksInDocument<cr>
-nnoremap <Leader>mD :vsc Edit.ClearBookmarks<cr>
-nnoremap <Leader>mw :vsc View.BookmarkWindow<cr>
-nnoremap <Leader>mn :vsc Edit.NextBookmark<cr>
-nnoremap <Leader>mN :vsc Edit.PreviousBookmark<cr>
+"nnoremap <Leader>mm :vsc Edit.ToggleBookmark<cr>
+"nnoremap <Leader>mM :vsc Edit.ToggleBookmark<cr>:vsc View.BookmarkWindow<cr>
+"nnoremap <Leader>md :vsc Edit.ClearAllBookmarksInDocument<cr>
+"nnoremap <Leader>mD :vsc Edit.ClearBookmarks<cr>
+"nnoremap <Leader>mw :vsc View.BookmarkWindow<cr>
+"nnoremap <Leader>mn :vsc Edit.NextBookmark<cr>
+"nnoremap <Leader>mN :vsc Edit.PreviousBookmark<cr>
+
+"--------------------------------------------------------------------------------
+" Version Control
+"--------------------------------------------------------------------------------
+noremap <leader>mh :vsc Team.Git.ViewHistory<CR>
+noremap <leader>ma :vsc Team.Git.Annotate<CR>
+noremap <leader>mm :vsc Team.Git.Commit<CR>
+noremap <leader>mu :vsc Team.Git.Undo<CR>
+noremap <leader>mc :vsc Team.Git.CompareWithUnmodified<CR>
+noremap <leader>mp :vsc Team.Git.CompareWithPrevious<CR>
+noremap <leader>mo :vsc Team.Git.Checkout<CR>
+noremap ]c :vsc Diff.NextDifference<CR>
+noremap [c :vsc Diff.PreviousDifference<CR>
 
 "--------------------------------------------------------------------------------
 " Refactoring R
@@ -285,10 +302,11 @@ xnoremap <leader>rP :vsc ReSharper.ReSharper_IntroduceParameter<CR>
 nnoremap <leader>rP viW:vsc ReSharper.ReSharper_IntroduceParameter<CR>
 xnoremap <leader>rv :vsc ReSharper.ReSharper_IntroVariable<CR>
 nnoremap <leader>rv viW:vsc ReSharper.ReSharper_IntroVariable<CR>
-noremap <leader>ra :vsc View.QuickActions<CR>
-noremap <leader>ac :vsc Project.AddClass<CR>
-noremap <leader>ai :vsc Project.AddInterface<CR>
-noremap <leader>ar :vsc Project.AddReference<CR>
+"noremap <leader>ra :vsc ReSharper_QuickActionsHideVs<CR>
+noremap <leader>ra :vsc ReSharper_AltEnter<CR>
+"noremap <leader>ac :vsc Project.AddClass<CR>
+"noremap <leader>ai :vsc Project.AddInterface<CR>
+"noremap <leader>ar :vsc Project.AddReference<CR>
 
 nnoremap <leader>rl :vsc ReSharper.ReSharper_LiveTemplates_Insert<CR>
 vmap S :vsc ReSharper.ReSharper_SurroundWith<CR>
@@ -314,23 +332,26 @@ noremap <leader>o :vsc Window.AutoHideAll<CR>
 noremap <M-p> :vsc Window.PinTab<CR>
 
 " Splits
+nnoremap <S-space><S--> :vsc Window.SplitHorizontaly<cr>
+nnoremap <S-space><S-\> :vsc Window.SplitVerticaly<cr>
+nnoremap <leader>j :vsc Window.NextSplitPane<cr>
 nnoremap <leader>j :vsc Window.NextSplitPane<cr>
 nnoremap <leader>k :vsc Window.PreviousSplitPane<cr>
-nnoremap <C-space>j :vsc Tools.NavigateTabGroups.Down<cr>
-nnoremap <C-space>k :vsc Tools.NavigateTabGroups.Up<cr>
-nnoremap <C-space>h :vsc Tools.NavigateTabGroups.Left<cr>
-nnoremap <C-space>l :vsc Tools.NavigateTabGroups.Right<cr>
-nnoremap <C-space>{ :vsc Window.MovetoPreviousTabGroup<cr>
-nnoremap <C-space>} :vsc Window.MovetoNextTabGroup<cr>
-nnoremap <C-Space>- :vsc Window.NewHorizontalTabGroup<CR>
-nnoremap <C-Space>\ :vsc Window.NewVerticalTabGroup<CR>
+nnoremap <S-space>j :vsc Tools.NavigateTabGroups.Down<cr>
+nnoremap <S-space>k :vsc Tools.NavigateTabGroups.Up<cr>
+nnoremap <S-space>h :vsc Tools.NavigateTabGroups.Left<cr>
+nnoremap <S-space>l :vsc Tools.NavigateTabGroups.Right<cr>
+nnoremap <S-space>{ :vsc Window.MovetoPreviousTabGroup<cr>
+nnoremap <S-space>} :vsc Window.MovetoNextTabGroup<cr>
+nnoremap <S-Space>- :vsc Window.NewHorizontalTabGroup<CR>
+nnoremap <S-Space>\ :vsc Window.NewVerticalTabGroup<CR>
 
 "-------------------------------------------------------------------------------
 " Find
 "-------------------------------------------------------------------------------
 noremap g// :vsc Edit.FindinFiles<cr>
 noremap g/r :vsc Edit.ReplaceinFiles<cr>
-noremap <leader>e :vsc Edit.Replace<cr>
+noremap <leader>er :vsc Edit.Replace<cr>
 noremap g/u :vsc ReSharper.ReSharper_FindUsages<CR> 
 
 "--------------------------------------------------------------------------------

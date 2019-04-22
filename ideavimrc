@@ -1,57 +1,94 @@
+"--------------------------------------------------------------------------------
+" Custom Shortcuts
+"--------------------------------------------------------------------------------
+" Ctrl + I - Quick Documentation
+" Ctrl + Shift + I - Quick Definitiong
+" Ctrl + Shift + = - Increase Font Size
+" Ctrl + Minus - Decrease Font Size
+" Ctrl + = - Reset Font Size
+" Ctrl + Tab - Activate Navigation Bar
+"--------------------------------------------------------------------------------
+" Selection
+"--------------------------------------------------------------------------------
+" Alt-Up - Move Lines Up
+" Alt-Dow - Move Lines Down
+" Alt-Shift-Down - Shrink Selection
+" Alt-Shift-Up Extend Selection
+
+" Ctrl Shift Alt Right - ReSharper.ReSharper_MoveRight ?????
+" Ctrl Shift Alt Right - ReSharper.ReSharper_MoveLeft ?????
+"--------------------------------------------------------------------------------
+" Fid Results
+"--------------------------------------------------------------------------------
+" Ctrl-; - Find Next
+" Ctrl-: - Find Previous
+"--------------------------------------------------------------------------------
+" Windows
+"--------------------------------------------------------------------------------
+" Ctrl + {J,K} - {Prev,Next} Tab
+" Ctrl + Shift + Q - Close
+
+" Ctrl + W, E - Error
+" Ctrl + W, W - Close
+" Ctrl + W, D - Dock
+" Ctrl + W, P - Pin
+" Ctrl + W, F - Float (Pin)
+
+" Alt + W, - -  View.SolutionExplorer
+" Alt + W, E -  ErrorList
+" Alt + W, H -  FindResults ?????
+" Alt + W, N -  Project.ManageNuGetPackages
+" Alt + W, U -  Unit Tests
+" Alt + W, T -  Terminal
+" Alt + W, V -  Version Control
+" Alt + W, S -  Structure
+
+
+"--------------------------------------------------------------------------------
+" Settings 
+"--------------------------------------------------------------------------------
 set gdefault                      " substitute all occurrences in line per default
-set history=10000                  " keep x lines of command line history
-set hlsearch                      " highlight search occurrences
 set ignorecase                    " ignore case in search patterns
-set smartcase                     " no ignore case when pattern is uppercase
-set incsearch                     " show search results while typing
-set wrapscan                      " searches wrap around the end of the file
-set number                        " line numbers
-set scrolloff=5 sidescrolloff=10  " keep some lines before and after the cursor visible
-set clipboard=unnamedplus,unnamed " integrate with system clipboard
-set surround                      " emulate vim-surround plugin
+set visualbell
+set noerrorbells
+set number
 set relativenumber
-set visualbell t_vb=                  " stop annoying beeping for non-error errors
-set cursorline                        " highlight current line
-if exists('&belloff')
-  set belloff=all                     " never ring the bell for any reason
-endif
+set scrolloff=5
+set surround
+
+set clipboard+=unnamed
+
+"filetype plugin indent on
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
+"set expandtab
 
 let mapleader = " "
 
-" edit ideavim config
-nnoremap <leader>vv :e C:\Users\Milos\.ideavimrc<CR>
-nnoremap <leader>vr :source ~/.ideavimrc<CR>
-
-" simple closing and saving (helpful in NEO keyboard layout)
-nnoremap <leader>w :w<CR>
-nnoremap <leader>x :action Exit<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :action CloseAllEditorsButActive<CR>
-nnoremap <leader>o :action HideAllWindows<CR>
-
-nnoremap <leader>o :action HideAllWindows<CR>
-
-"-----------------------------------------------------
-" Fix some vim annoyances
-
+"--------------------------------------------------------------------------------
+" General
+"--------------------------------------------------------------------------------
 " make Y behave like D and C, yanking till end of line
 map Y y$
 
 " don't overwrite register when pasting over selection
-vnoremap p pgvy
+" vnoremap p pgvy
 
 " don't lose selection when indenting
 vnoremap < <gv
 vnoremap > >gv
-vnoremap = =gv
+"vnoremap = =gv
 
-" delete/edit whole word backwards
-" (can confilict with multiple cursors)
-nnoremap db xdb
-nnoremap cb xcb
+nnoremap \s :source ~/.ideavimrc<CR>
+nnoremap \v :e C:\Users\mstevanovic2\.ideavimrc<CR>
+nnoremap \m :e C:\Users\mstevanovic2\.debug_map.ideavimrc<CR>
+nnoremap \u :e C:\Users\mstevanovic2\.debug_unmap.ideavimrc<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom bindings
+" Folding
+vmap z :<bs><bs><bs><bs><bs>action CollapseSelection<CR>
+nmap zC :action CollapseAllRegions<CR>
+nmap zO :action ExpandAllRegions<CR>
 
 " clear search highlighting
 nnoremap <leader>n <esc>:nohls<return><esc>
@@ -60,71 +97,191 @@ nnoremap <leader>n <esc>:nohls<return><esc>
 nnoremap <leader>, mZA,<Esc>`Z
 nnoremap <leader>; mZA;<Esc>`Z
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" IDEA specific
+" Scrolling
+nmap <C-f> :action VimMotionScrollPageDown<cr>
+nmap <C-b> :action VimMotionScrollPageUp<cr>
 
-" moving between tabs
-nmap <C-h> <c-w>h
-nmap <C-l> <c-w>l
-nmap <C-k> <c-w>k
-nmap <C-j> <c-w>j
-
-" change font size
-nmap + :action EditorIncreaseFontSize<CR>
-nmap - :action EditorDecreaseFontSize<CR>
-nmap <leader>= :action EditorResetFontSize<CR>
-
-" code navigation
-
-nmap <leader>f :promptfind<CR>
-nmap <leader>s :promptrepl<CR>
-nmap <leader>e viw s
-
-vmap <leader>f :<bs><bs><kbs><bs><bs>promptfind<CR>
-vmap <leader>s :<bs><bs><bs><bs><bs>promptrepl<CR>
-
-nmap <leader>p :action GotoSuperMethod<CR>
-nmap <leader>t :action GotoFile<CR>
-nmap <leader>c :action GotoAction<CR>
-nmap <leader>gc :action GotoClass<CR>
-nmap <leader>gs :action GotoSymbol<CR>
-nmap <leader>ne :action GotoNextError<CR>
-
-nmap <leader>d :action GotoDeclaration<CR>
-nmap <leader>i :action GotoImplementation<CR>
-nmap <leader>u :action ShowUsages<CR>
-nmap <leader>U :action FindUsages<CR>
-nmap <C-o> :action Back<CR>
-nmap <C-b> :action ToggleLineBreakpoint<CR>
-nmap <C-i> :action Forward<CR>
-nmap <leader>a :action FindInPath<CR>
-nmap <leader>A :action FindInPath<CR>
-nmap <leader>rf :action RecentFiles<CR>
-nmap <C-S-E> :action RunClass<CR>
-nmap <C-e> :action Run<CR>
-nmap <C-S-D> :action Debug<CR>
-
-nmap <leader>S :action FileStructurePopup<CR>
-nmap <leader>D :action ShowErrorDescription<CR>
-
-" editing / refactoring
-vnoremap = :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action AutoIndentLines<CR>
-nmap == V=
-vnoremap gq :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action ReformatCode<CR>
-nmap gqq Vgq
-vnoremap gc :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action CommentByLineComment<cr>
+"--------------------------------------------------------------------------------
+" Code Formating
+"--------------------------------------------------------------------------------
+" Toggle line comment
 nmap gcc Vgc
 
+" Comment Selection
+vnoremap gc :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action CommentByLineComment<cr>
+
+" Autoindent Selection
+vnoremap = :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action AutoIndentLines<CR>
+
+" Autoindent Line
+"nmap == V=
+
+" Reformat Selection
+vnoremap gq :<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action ReformatCode<CR>
+
+" Reformat Line
+nmap gqq Vgq
+
+"-------------------------------------------------------------------------------
+" Find
+"-------------------------------------------------------------------------------
+noremap g// :action FindInPath<cr>
+noremap g/r :action ReplaceInPath<cr>
+noremap g/u :action FindUsages<CR> 
+nmap g/f :promptfind<CR>
+nmap g/e viw s
+vmap g/f :<bs><bs><kbs><bs><bs>promptfind<CR>
+vmap g/r :<bs><bs><bs><bs><bs>promptrepl<CR>
+
+"--------------------------------------------------------------------------------
+" Navigation
+"--------------------------------------------------------------------------------
+" Alt + Shift + f ------> GotoFile<CR>
+" Alt + Shift + a ------> GotoAction<CR>
+" Alt + Shift + e ------> SearchEverywhere<CR>
+" Alt + Shift + t ------> GotoClass<CR>
+" Alt + Shift + T ------> GotoTypeDeclaration<CR>
+" Alt + Shift + s ------> GotoSymbol<CR>
+" Alt + Shift + d ------> GotoDeclaration<CR>
+" Alt + Shift + i ------> GotoImplementation<CR>
+" Alt + Shift + p ------> GotoSuperMethod<CR>
+" Alt + Shift + r ------> RecentFiles<CR>
+" Alt + Shift + R ------> RecentChangedFiles<CR>
+" Alt + Shift + l ------> GotoRelated<CR>
+" Alt + Shift + u ------> ShowUsages<CR>
+" Alt + Shift + m ------> FileStructurePopup<CR>
+" Alt + Shift + ; ------> JumpToLastChange<CR>
+" Alt + Shift + : ------> JumpToNextChange<CR>
+
+" nmap s :action AceAction<CR>
+" nmap \w :action AceWordForwardAction<CR>
+" nmap \W :action AceWordBackwardsAction<CR>
+
+nmap <C-o> :action Back<CR>
+nmap <C-i> :action Forward<CR>
+
+nmap <leader>i :action ShowErrorDescription<CR>
+nmap <leader>d :action QuickJavaDoc<CR>
+nmap <leader>D :action QuickImplementations<CR>
+
+nmap ]e :action GotoNextError<CR>
+nmap [e :action GotoPreviousError<CR>
+
+nmap [m :action MethodUp<CR>
+kmap ]m :action MethodDown<CR>
+
+nmap ]c /\\<trait\>\\\|\\<class\>\\\|\\<object\>\\\|\\<interface\>\\\|\\<enum\><CR>w:nohlsearch<CR>
+nmap [c b?\\<trait\>\\\|\\<class\>\\\|\\<object\>\\\|\\<interface\>\\\|\\<enum\><CR>w:nohlsearch<CR>
+
+"--------------------------------------------------------------------------------
+" Window Management
+"--------------------------------------------------------------------------------
+" simple closing and saving
+nnoremap <leader>w :w<CR>
+nnoremap <leader>X :action Exit<CR>
+nnoremap <leader>x :action CloseAllEditorsButActive<CR>
+nnoremap <leader>q :action CloseEditor<CR>
+nnoremap <leader>Q :action ReopenClosedTab<CR>
+nnoremap <leader>O :action VimWindowOnly<CR>:action ActivateProjectToolWindow<CR>:action HideAllWindows<CR>
+nnoremap <leader>o :action HideAllWindows<CR>
+" splits
+nnoremap <C-space>- :action VimWindowSplitHorizontal<cr>
+nnoremap <C-space>\ :action VimWindowSplitVertical<cr>
+nnoremap <C-space><space> :action ChangeSplitOrientation<cr>
+" navigation
+nnoremap <C-space><down> :action VimWindowDown<cr>
+nnoremap <C-space><up> :action VimWindowUp<cr>
+nnoremap <C-space><right> :action VimWindowRight<cr>
+nnoremap <C-space><left> :action VimWindowLeft<cr>
+nmap <leader><leader> :action VimFilePrevious<CR>
+nmap - :action LocateInSolutionView<CR>
+
+nmap <C-Space>{ :action MoveEditorToOppositeTabGroup<CR> 
+nmap <C-Space>} :action MoveEditorToOppositeTabGroup<CR> 
+
+"--------------------------------------------------------------------------------
+" Debug
+"--------------------------------------------------------------------------------
+nmap <leader>bb :action ToggleLineBreakpoint<CR>
+nmap <leader>ss :action RunClass<CR>
+nmap <leader>sr :action Run<CR>
+nmap <leader>sd :source ~/.debug_map.ideavimrc<CR>:action Debug<CR>
+nmap <leader>S :source ~/.debug_unmap.ideavimrc<CR>:action Stop<CR>
+
+"--------------------------------------------------------------------------------
+" Refactoring actions
+"--------------------------------------------------------------------------------
+nnoremap <Leader>ri :action Inline<CR>
+nnoremap <Leader>rr :action RenameElement<CR>i
+nnoremap <Leader>rj :action MemberPushDown<CR>
+nnoremap <Leader>rk :action MemberPullUp<CR>
+nnoremap <Leader>rs :action ChangeSignature<CR>
+nnoremap <Leader>rd :action SafeDelete<CR>
+nnoremap <Leader>rm :action Move<CR>
+nnoremap <Leader>rc :action CopyElement<CR>
+
+--------------------------------------------------------------------------------
+" Format actions
+"-------------------------------------------------------------------------------
+nnoremap <Leader>ff :action ReformatCode<CR>
+vnoremap <Leader>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action ReformatCode<CR>gv
+nnoremap <Leader>fi :action OptimizeImports<CR>
+nnoremap <Leader>fa :action ShowIntentionActions<CR><Esc>
+
 " like in vim-multiple-cursors
-nmap <leader>re :action RenameElement<CR>
 nmap <, :action MoveElementLeft<CR>
 nmap >, :action MoveElementRight<CR>
 
-nmap <leader>m :action ExtractMethod<CR>
-vmap <leader>m :action ExtractMethod<CR>
-nmap <leader>i :action Inline<CR>
-nmap <leader><S-o> :action OptimizeImports<CR>
-nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+imap <C-S-Space> <C-o>:action ParameterInfo<CR>
+nmap <C-S-Space> :action ParameterInfo<CR>
 
-imap <C-f> <C-o>:action ParameterInfo<CR>
-nmap <C-f> :action ParameterInfo<CR>
+"--------------------------------------------------------------------------------
+" Extract actions
+"--------------------------------------------------------------------------------
+nnoremap <Leader>ei :action ExtractInterface<CR>
+nnoremap <Leader>es :action ExtractSuperclass<CR>
+nnoremap <Leader>en :action ExtractClass<CR>
+nnoremap <Leader>em :action ExtractMethod<CR>
+vnoremap <Leader>em <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action ExtractMethod<CR>
+nnoremap <Leader>ev :action IntroduceVariable<CR>
+vnoremap <Leader>ev <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action IntroduceVariable<CR>
+nnoremap <Leader>ef :action IntroduceField<CR>
+vnoremap <Leader>ef <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action IntroduceField<CR>
+nnoremap <Leader>ep :action IntroduceParameter<CR>
+vnoremap <Leader>ep <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action IntroduceParameter<CR>
+nnoremap <Leader>ec :action IntroduceConstant<CR>
+vnoremap <Leader>ec <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action IntroduceConstant<CR>
+
+"--------------------------------------------------------------------------------
+" Version Control
+"--------------------------------------------------------------------------------
+nnoremap ]v :action VcsShowNextChangeMarker<CR>
+nnoremap [v :action VcsShowPrevChangeMarker<CR>
+nnoremap <Leader>vd :action VcsShowCurrentChangeMarker<CR>
+nnoremap <Leader>vr :action Vcs.RollbackChangedLines<CR>
+nnoremap <Leader>vu :action Vcs.UpdateProject<CR>
+nnoremap <Leader>vp :action Vcs.Push<CR>
+nnoremap <Leader>vc :action Vcs.QuickListPopupAction<CR>
+nnoremap <Leader>vb :action Git.Branches<CR>
+"nnoremap <Leader>vv :action ActivateVersionControlToolWindow<CR>
+nnoremap <Leader>va :set relativenumber!<CR>:action Annotate<CR>:action Annotate<CR>
+
+nnoremap <leader>vo :action uk.co.ben_gibson.git.link.UI.Action.Menu.MenuAction.Browser<CR>
+nnoremap <leader>vy :action uk.co.ben_gibson.git.link.UI.Action.Menu.MenuAction.Clipboard<CR>
+
+"--------------------------------------------------------------------------------
+" Bookmarks
+"--------------------------------------------------------------------------------
+nnoremap <Leader>m :action ToggleBookmarkWithMnemonic<CR>
+nnoremap <Leader>' :action ShowBookmarks<CR>
+nnoremap <Leader>` :action ShowBookmarks<CR>
+nnoremap ]b :action GotoNextBookmark<CR>
+nnoremap [b :action GotoPreviousBookmark<CR>"
+
+"--------------------------------------------------------------------------------
+" Hierarchy actions
+"--------------------------------------------------------------------------------
+nnoremap <Leader>hh :action TypeHierarchy<CR>
+nnoremap <Leader>hm :action MethodHierarchy<CR>
+nnoremap <Leader>hc :action CallHierarchy<CR/
+nnoremap <Leader>hd :action ShowUmlDiagramPopup<CR>
