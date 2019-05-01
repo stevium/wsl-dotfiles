@@ -17,8 +17,8 @@ nnoremap <leader>wx    :action VimWindowClose<CR>
 vnoremap <leader>wx    <esc>:action VimWindowClose<CR>
 
 " Focus window far left
-nnoremap <leader>wH    :action VimWindowLeft<CR>10@:
-vnoremap <leader>wH    <Esc>:action VimWindowLeft<CR>10@:
+nnoremap <leader>wH    :action MoveEditorToOppositeTabGroup<CR>
+vnoremap <leader>wH    <Esc>:action MoveEditorToOppositeTabGroup<CR>
 
 " Focus window left
 nnoremap <leader>wh         :action VimWindowLeft<CR>
@@ -47,8 +47,8 @@ nnoremap <leader>w<Up>    :action VimWindowUp<CR>
 vnoremap <leader>w<Up>    <Esc>:action VimWindowUp<CR>
 
 " Focus window far right
-nnoremap <leader>wL    :action VimWindowRight<CR>10@:
-vnoremap <leader>wL    <Esc>:action VimWindowRight<CR>10@:
+nnoremap <leader>wL    :action MoveEditorToOppositeTabGroup<CR>
+vnoremap <leader>wL    <Esc>:action MoveEditorToOppositeTabGroup<CR>
 
 " Focus window right
 nnoremap <leader>wl          :action VimWindowRight<CR>
